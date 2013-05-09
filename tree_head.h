@@ -5,6 +5,9 @@
         const typeof( ((type *)0)->member ) *__mptr = (ptr);    \
         (type *)( (char *)__mptr - offsetof(type,member) );})
 
+/** A tree structure. It follows the example of the "list_head" list
+ *  implementation from the Linux Kernel -- in fact, we even took some macros
+ *  from the kernel. */
 struct tree_head {
 	struct tree_head* father;
 
@@ -36,7 +39,7 @@ void tree_remove_from_tree(struct tree_head* node);
 /** Runs through the tree, executing the 'f', passing as parameter the node
  *  element and the node father.
  *  \param root The root of the tree to be searched through.
- *  \param f The function to be executed in the tree.*/
+ *  \param f A function to be executed in each node of the tree.*/
 void tree_search_depth_first(struct tree_head* root, tree_func_t f);
 
 
